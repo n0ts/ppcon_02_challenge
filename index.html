@@ -131,5 +131,78 @@
     <script src="js/bootstrap-typeahead.js?body=1" type="text/javascript"></script>
     <script src="js/user-edit.js?body=1" type="text/javascript"></script>
     <!-- Placed at the end of the document so the pages load faster -->
+
+    <script>
+      $('#subject1>#get_name').click(function() {
+        $('#subject01_result').fadeOut('slow', function() {
+          $(this).text('');
+          $(this).css('font-size', 'x-large');
+          $(this).css('color', '#E75480');
+          $(this).css('text-decoration', 'blink');
+          $(this).css('padding', '10px');
+          $(this).text('Naoya Nakazawa');
+          $(this).fadeIn('slow');
+        });
+      });
+    </script>
+
+    <script>
+      $('#subject2>#add_sakurako').click(function() {
+        if ($('#member_list>#sakurako').length) {
+          alert('すでに「櫻子」は追加されています');
+        } else {
+          $('#member_list>#chinatsu').after('<li id="sakurako">櫻子</li>');
+        }
+      });
+
+      $('#subject2>#add_himawari').click(function() {
+        if ($('#member_list>#himawari').length) {
+          return alert('すでに「向日葵」は追加されています');
+        }
+
+        var tag = '<li id="himawari">向日葵</li>';
+        if ($('#member_list>#sakurako').length) {
+          $('#member_list>#sakurako').after(tag);
+        } else {
+          $('#member_list>#chinatsu').after(tag);
+        }
+      });
+    </script>
+
+    <script>
+      $('#subject3>#remove_akari').click(function() {
+        if ($('#member_list_remove>#akari').is(':hidden')) {
+          alert('誠に残念なお知らせですが、「あかり」ちゃんはもう消えていますよ・・・残念で仕方がありません・・・');
+        } else {
+          if (confirm("本当に「あかり」ちゃんを消しても大丈夫ですか？本当に間違えないですか？") == true) {
+            $('#member_list_remove>#akari').fadeOut('slow');
+          }
+        }
+      });
+    </script>
+
+    <script>
+      $('#subject4>#change_visible_momo').click(function() {
+        if ($('#subject4>#stealth_momo').is(':hidden')) {
+          $('#subject4>#stealth_momo').fadeIn('show');
+        } else {
+          $('#subject4>#stealth_momo').fadeOut('show');
+        }
+      });
+    </script>
+
+    <script>
+      $('#subject5>#change_header_html').click(function() {
+        $('h2').each(
+          function() {
+            if ($(this).text()[0] != "【") {
+              $(this).fadeOut('first', function() {
+                $(this).prepend('【').append('】').fadeIn('first');
+              });
+            }
+          }
+        );
+      });
+    </script>
   </body>
 </html>
